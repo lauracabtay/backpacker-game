@@ -12,6 +12,7 @@ import MongoStore from 'connect-mongo';
 import {User} from './models/user.model.js'
 import {WithId} from 'mongodb'
 import {TicTacToeBoard} from './util/tic-tac-toe.js'
+import herokuAwake from 'heroku-awake';
 
 declare module 'express-session' {
 	interface SessionData {
@@ -39,7 +40,14 @@ declare module 'express-session' {
 
 logger.info('Starting server')
 
+const PORT = 3000;
+const url = "https://backpacker-game.herokuapp.com/";
+
 const app = express();
+
+app.listen(PORT, () => {
+  herokuAwake(url);
+});
 
 app.set('view engine', 'ejs');
 app.set('views', './src/views');

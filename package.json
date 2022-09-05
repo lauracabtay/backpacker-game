@@ -24,6 +24,7 @@
     "express": "5.0.0-beta.1",
     "express-ejs-layouts": "^2.5.1",
     "express-session": "^1.17.2",
+    "heroku-awake": "^1.0.10",
     "mongodb": "^4.5.0",
     "mongoose": "^6.3.3",
     "winston": "^3.7.2"
