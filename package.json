@@ -28,6 +28,7 @@
     "mongodb": "^4.5.0",
     "mongoose": "^6.3.3",
     "p5": "^1.4.2",
+    "ts-node": "^10.7.0",
     "winston": "^3.7.2"
   },
   "devDependencies": {
@@ -39,7 +40,6 @@
     "jest": "^28.1.0",
     "jest-ts-webcompat-resolver": "^1.0.0",
     "ts-jest": "^28.0.2",
-    "ts-node": "^10.7.0",
     "typescript": "^4.6.4"
   },
   "type": "module"
