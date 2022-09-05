@@ -4,7 +4,7 @@ function toArray(value) {
   return Array.isArray(value) ? value : [value];
 }
 
-async function getItems() {
+export async function getItems() {
   const response = await fetch("/users/backpack")
 	const values = await response.json()
 	return values;

@@ -1,4 +1,9 @@
 import p5 from 'p5';
+import { Character } from './character';
+import { CollectibleObject } from './object';
+import { BaseObject } from './baseObject';
+import { getItems } from './inventoryController';
+import { getCanvasPosition } from './divAligner';
 
 let backgroundImage;
 let backPackOriginal;
@@ -44,7 +49,7 @@ function preload() {
   }
 
   backgroundImage = p5.loadImage(p5.backgroundImagePath);
-  signImage = p5.loadImage("/static/sign.png");
+  p5.signImage = p5.loadImage("/static/sign.png");
   backPackOriginal = p5.loadImage("/static/backpack.png");
 
   defaultFont = p5.loadFont("/static/VT323-Regular.ttf");
@@ -91,7 +96,7 @@ async function setup() {
     512 * BaseObject.scaleFactor,
     512 * BaseObject.scaleFactor
   );
-  signImage.resize(32 * BaseObject.scaleFactor, 32 * BaseObject.scaleFactor);
+  p5.signImage.resize(32 * BaseObject.scaleFactor, 32 * BaseObject.scaleFactor);
   backPack.resize(0, parseInt(p5.windowHeight) * 0.99);
 
   for (const obj of CollectibleObject.objects) {
@@ -106,7 +111,7 @@ async function setup() {
 
 	// i am sorry for this
 	document.addEventListener('mousedown', function(mouseEvent) {
-		  const pos = getCanvasPosition();
+		const pos = getCanvasPosition();
 		const mx = mouseEvent.clientX;
 		const my = mouseEvent.clientY;
 		const bpw = backPack.width * BaseObject.scaleFactor;
@@ -140,7 +145,7 @@ function draw() {
 
   // ui code
   p5.image(backPack, xoffset - backPack.width, 0);
-  alignDiv((xoffset - backPack.width) + 15, 30);
+  p5.alignDiv((xoffset - backPack.width) + 15, 30);
 
   // game code
   p5.translate(xoffset, 0);
@@ -152,11 +157,11 @@ function draw() {
     obj.display();
   }
 
-  for (const sign of Sign.signs) {
+  for (const sign of p5.Sign.signs) {
     sign.display();
   }
 
-	placeItems(backPackItems, p5.backPackPageNumber * 6);
+	p5.placeItems(backPackItems, p5.backPackPageNumber * 6);
 }
 
 function copyBackPack() {

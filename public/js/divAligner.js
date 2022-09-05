@@ -1,6 +1,6 @@
 import p5 from 'p5';
 
-function getCanvasPosition() {
+export function getCanvasPosition() {
 	const canvas = document.getElementById("defaultCanvas0");
 	return [canvas?.offsetLeft, canvas?.offsetTop]
 }

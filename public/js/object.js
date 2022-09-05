@@ -1,7 +1,7 @@
 import p5 from 'p5';
 import { BaseObject } from './baseObject';
 
-class CollectibleObject extends BaseObject {
+export class CollectibleObject extends BaseObject {
   static objects = [];
   static objectImagesURI = [];
   static objectImages = [];
