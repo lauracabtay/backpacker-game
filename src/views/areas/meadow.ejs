@@ -1,0 +1,34 @@
+<%- include("partials/header") -%>
+
+<p style="display: none;" id="hasWonSudoku"><%= hasWonSudoku %></p>
+
+
+<div id="story" class="meadow-story">
+	<p>You stumble upon a meadow that looks oddly familiar.</p>
+	<p>There seems to be a small rock the size of a large rock on the ground</p>
+	<p><i>"Guess what I can be used for?"</i> said the rock.</p>
+</div>
+
+<script>
+	const backgroundImagePath = "/static/areaImages/meadow/bg2.png";
+
+	CollectibleObject.objectImagesURI = [
+		"/static/areaImages/meadow/rock.png",
+	]
+	CollectibleObject.objects = [
+		new CollectibleObject("Rock", 0, 5, 5, (obj) => { obj.enabled = false; obj.hidden = true; }),
+	]
+
+	new Sign(9, 14, "To Path", () => { window.location.href = "/areas/pathway"; });
+	new Sign(5, 1, "To Town", () => { window.location.href = "/areas/town"; });
+	new Sign(15, 4, "To Farm", () => { window.location.href = "/areas/farm"; });
+
+	if (document.getElementById("hasWonSudoku").innerText != "WIN") {
+    const pathwaySign = new Sign(14, 10, "To Swamp", () => { });
+    pathwaySign.callback = () => { pathwaySign.message = "You need to win\nSudoku to\nfollow this path." }
+  } else {
+    new Sign(14, 10, "To Swamp", () => { window.location.href = "/areas/swamp"; });
+  };
+</script>
+
+<%- include("partials/footer") -%>

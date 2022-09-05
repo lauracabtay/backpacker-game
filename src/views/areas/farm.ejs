@@ -1,0 +1,52 @@
+<%- include("partials/header") -%>
+
+<p style="display: none;" id="hasWonCodeBreaker"><%= hasWonCodeBreaker %></p>
+
+<div class="farm-story" id="story">
+  <p>You walk onto a small farm. The animals are friendly and you see
+    the farmer going about his chores.
+    There is so much to see, where to start?
+  </p>
+</div>
+
+<script>
+	const backgroundImagePath = "/static/areaImages/farm/bg.png";
+
+	new Sign(0, 8, "To Town", () => { window.location.href = "/areas/town"; });
+	new Sign(8, 14, "To Meadow", () => { window.location.href = "/areas/meadow"; });
+
+  if (document.getElementById("hasWonCodeBreaker").innerText == "WIN") {
+			new Sign(14, 4, "To River", () => { window.location.href = "/areas/river"; });
+		} else {
+			const mountainsSign = new Sign(14, 4, "Farmer's Gate", () => { window.location.href = "/minigames/codebreaker" });
+		}
+
+    CollectibleObject.objectImagesURI = [
+		"/static/images/sprites/milk.png",
+	]
+	CollectibleObject.objects = [
+		new CollectibleObject("Milk", 0, 12, 6, (obj) => { obj.enabled = false; obj.hidden = true; }),
+	]
+
+  Character.objectImagesURI = [
+			"/static/areaImages/farm/farmer.png",
+		]
+		Character.objects = [
+			new Character("Farmer", 0, 4, 6, (obj) => { window.location.href = "/blockers/farmer"; }),
+		]
+</script>
+
+<%- include("partials/footer") -%>
+
+<!-- <form action="/areas/meadow">
+	<input class="meadow" type="submit" value="Meadow"/>
+</form>
+
+
+<form action="/blockers/farmer">
+	<input class="farmer" type="submit" value="Farmer"/>
+</form>
+
+
+
+<p>Items to Collect: Milk</p> -->

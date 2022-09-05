@@ -1,0 +1,57 @@
+<%- include("partials/header") -%>
+
+<p style="display: none;" id="backpack"><%= hasWoolyHat %></p>
+<p style="display: none;" id="hasWonTicTacToe"><%= hasWonTicTacToe %></p>
+<p style="display: none;" id="hasWonMatchPairs"><%= hasWonMatchPairs %></p>
+
+<div class="cave-story" id="story">
+  <p>You entered the small opening.
+		It's small and damp but as you walk it soon begins to open up.
+		You reach a large cave that oddly shimmers in the torchlight.
+		There are a number of odd drawings on the wall... what could they mean?
+	</p>
+</div>
+
+<script>
+	const backgroundImagePath = "/static/areaImages/cavetunnel/bg.png";
+
+  Character.objectImagesURI = [
+    "/static/areaImages/cavetunnel/tictactoe.png",
+    ]
+  Character.objects = [
+    new Character("Tic Tac Toe", 0, 7, 2, (obj) => { window.location.href = "/minigames/tictactoe"; }),
+    ]
+
+  if (document.getElementById("hasWonTicTacToe").innerText != "WIN") {
+    const pathwaySign = new Sign(7, 14, "To Pathway", () => { });
+    pathwaySign.callback = () => { pathwaySign.message = "You need to win Tic Tac Toe\nto follow this path." }
+  } else {
+    new Sign(7, 14, "To Pathway", () => { window.location.href = "/areas/pathway"; });
+  };
+
+  if (document.getElementById("hasWonMatchPairs").innerText != "WIN") {
+    const pathwaySign = new Sign(14, 10, "To Forest", () => { });
+    pathwaySign.callback = () => { pathwaySign.message = "You need to win\nMatch Pairs to\nfollow this path." }
+  } else {
+    new Sign(14, 10, "To Forest", () => { window.location.href = "/areas/forest"; });
+  };
+
+  if (document.getElementById("backpack").innerText == "true") {
+		new Sign(11, 4, "To Mountains", () => { window.location.href = "/areas/mountains"; });
+	} else {
+		const mountainsSign = new Sign(11, 4, "To Mountains", () => { });
+    mountainsSign.callback = () => { mountainsSign.message = "You need a wooly hat\nto got to the mountains!" }
+	}
+</script>
+
+<%- include("partials/footer") -%>
+
+<!-- <form action=
+  <% if (hasWonTicTacToe == 'WIN') { %>
+    "/areas/pathway"
+  <% } else { %>
+    "/minigames/ticTacToe"
+  <% } %>>
+  <input class="pathway" type="submit" value="Pathway"/>
+</form> -->
+

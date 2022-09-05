@@ -1,0 +1,24 @@
+#userguesses-container {
+    display: grid;
+    grid-template-columns: 60px 120px;
+    grid-gap: 10px;}
+
+#previous-guesses{
+    margin-bottom: 0px;
+}
+
+.correctly-placed {
+    background-color: rgb(117, 192, 117);
+    color: black;
+    padding: 2px 5px;}
+
+.incorrectly-placed {
+    background-color: rgb(232, 202, 111);
+    color: black;
+    padding: 2px 5px;}
+
+.no-match {
+    background-color: rgb(223, 132, 132);
+    color: black;
+    padding: 2px 5px;
+}

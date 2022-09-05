@@ -1,0 +1,69 @@
+<head>
+  <link rel="stylesheet" type="text/css" href="/static/css/matchpairs.css" />
+</head>
+
+<h1 id="timer">30</h1>
+
+<section class="match-pairs-game">
+  <% for (const item of ['water-bottle', 'water-bottle', 'matches', 'matches', 'diamond',
+  'diamond', 'saucepan', 'saucepan', 'toadstool', 'toadstool', 'compass',
+  'compass'].sort(() => Math.random() - 0.5)) { %>
+  <div class="match-pairs-card" data-item="<%= item %>">
+    <img class="front-face" src="/static/images/sprites/<%= item %>.png" alt="<%= item %>" />
+    <img
+      class="back-face"
+      src="/static/minigameImages/matchpairs/back-card.png"
+      alt="Back face of card"
+    />
+  </div>
+  <% } %>
+</section>
+
+<script>
+  let timer = 30;
+  let timerTask;
+  let selectedCard;
+
+
+  function startTimer() {
+  timerTask ?? (timerTask = setInterval(() => {
+    if (timer == 0) window.location.href = '/minigames/matchpairs/result';
+    document.getElementById('timer').innerText = --timer;
+   }, 1000));
+  }
+
+  async function delay(time) {
+    return new Promise(r => setTimeout(r, time));
+  }
+
+  let clickLock = false;
+  async function onClick(event) {
+    startTimer();
+    if (clickLock) return;
+    clickLock = true;
+    if (selectedCard === this || this.classList.contains('flip')) return;
+    this.classList.add('flip');
+    await delay(500);
+    if (selectedCard) {
+      if (selectedCard.dataset.item === this.dataset.item) {
+        this.classList.add('correct');
+        selectedCard.classList.add('correct');
+        clickLock = false;
+        selectedCard = undefined;
+
+        if (document.querySelectorAll('.match-pairs-card:not(.correct)').length === 0) window.location.href = '/minigames/matchpairs/result?win';
+        return
+      }
+      await delay(1000);
+      this.classList.remove('flip');
+      selectedCard.classList.remove('flip');
+      selectedCard = undefined;
+    } else {
+      selectedCard = this;
+    }
+    clickLock = false;
+  }
+
+  document.querySelectorAll('.match-pairs-card').forEach(it => it.addEventListener('click', onClick))
+
+</script>

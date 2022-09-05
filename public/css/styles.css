@@ -1,0 +1,293 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'VT323', monospace;
+}
+
+body {
+    background-color: #306082;
+}
+
+
+/* HOMEPAGE, LOGIN, SIGNUP PAGES */
+
+.homepage-container,
+.login-container,
+.signup-container,
+.lost-item-container {
+    display: grid;
+    justify-content: center;
+    justify-items: center;
+}
+
+.logo {
+    height: 50vh;
+}
+
+/* FORM STYLING FOR FRONT PAGES */
+
+form {
+    color: #fbf236;
+    font-size: 30px;
+}
+
+.signup-box,
+.login-box,
+.lost-item-box,
+.logout {
+    width: 40%;
+}
+
+/* BUTTONS, SUBMITS, TEXT FORMS */
+
+.home-button {
+    font-size: 30px;
+    padding: 8px;
+    margin: 15px;
+    width: 100%;
+    background-color: #fbf236;
+    border-style: solid;
+    border-style: solid;
+    border-color: black;
+    transition: 0.25s;
+}
+
+.home-button:hover {
+    box-shadow: 5px 10px black;
+}
+
+input[type=text],
+[type=password],
+input[type=email] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border: 3px solid #fbf236;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    background-color: #fbf236;
+    color: black;
+    font-size: 30px;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    transition: 0.25s;
+    border-style: solid;
+    border-color: black;
+}
+
+input[type=submit]:hover {
+    box-shadow: 5px 10px black;
+}
+
+input[type=submit]:disabled {
+    box-shadow: none !important;
+    background: #777;
+}
+
+/* HANGMAN GAME PAGES */
+
+.hangman-container h1 {
+    text-align: center;
+    font-size: 80px;
+    color: #fbf236;
+    padding-top: 50px;
+}
+
+.hangman-box {
+    font-size: 40px;
+    color: white;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.hangman-form {
+display: flex;
+}
+
+#current-word {
+    color: #fbf236;
+    padding-bottom: 20px;
+}
+
+/* TICTACTOE PAGE */
+.tictactoe-container  {
+    display: grid;
+    justify-content: center;
+    justify-items: center;
+    padding-top: 50px;
+}
+
+.tictactoe-container h1 {
+    text-align: center;
+    font-size: 80px;
+    color: #fbf236;
+    padding-bottom: 20px;
+}
+
+.tictactoe-form button {
+    font-size: 30px;
+    background-color: #fbf236;
+    border-style: solid;
+    border-style: solid;
+    border-color: black;
+    transition: 0.25s;
+}
+
+#ttt-page-buttons {
+    width: 250px;
+    padding-top: 50px;
+    display: grid;
+    margin: auto;
+}
+
+#ttt-story {
+    color: white;
+    font-size: 20px;
+    text-align: center;
+}
+
+.tictactoe-form button:hover {
+    box-shadow: 5px 10px black;
+}
+
+img {
+    image-rendering: pixelated;
+}
+
+
+
+/* STORY PAGES TEXT */
+
+#story p {
+    color: #fbf236;
+}
+
+/* BLOCKER PAGES */
+
+.blocker-header {
+    padding-top: 50px;
+    padding-bottom: 30px;
+}
+
+.blocker-story {
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    width: 520px;
+    margin: auto;
+}
+
+.blocker-buttons {
+    width: 250px;
+    padding-top: 50px;
+    display: grid;
+    margin: auto;
+}
+
+#farmer-request {
+    font-size: 30px;
+    padding-bottom: 30px;
+    text-align: center;
+}
+
+#pixie-request {
+    font-size: 30px;
+    padding-bottom: 30px;
+    text-align: center;
+}
+
+/*GAME PAGES */
+
+.game-header {
+    padding-top: 50px;
+    color: #fbf236;
+    text-align: center;
+    font-size: 50px;
+}
+.game-story {
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    width: 520px;
+    margin: auto;
+    padding-top: 40px;
+}
+
+.game-buttons {
+    width: 250px;
+    padding-top: 40px;
+    display: grid;
+    margin: auto;
+}
+
+#highlow-game {
+    font-size: 80px;
+    text-align: center;
+    margin: auto;
+    padding-top: 30px;
+}
+
+#blackjack-game {
+    font-size: 70px;
+    text-align: center;
+    margin: auto;
+    padding-top: 30px;
+}
+
+#blackjack-scores {
+    text-align: center;
+    font-size: 30px;
+    color: white;
+    margin: auto;
+}
+
+#codebreaker-info {
+    text-align: center;
+    font-size: 20px;
+    color: #fbf236;
+    font-weight: bold;
+    padding-top: 8px;
+}
+
+#codebreaker-game {
+    padding-top: 20px;
+    font-size: 20px;
+    line-height: 30px;
+    text-align: center;
+    margin: auto;
+}
+
+#codebreaker-guess {
+    font-size: 45px;
+    color: white;
+    padding-bottom: 15px;
+}
+
+#userguesses-container {
+    width: 150px;
+    margin: auto;
+    justify-content: center;
+    justify-items: center;
+    color: white;
+}
+
+#rps-result {
+    text-align: center;
+    font-size: 25px;
+    color: white;
+    font-weight: bold;
+    padding-top: 50px;
+}
+
+.rps {
+    color: #fbf236;
+}

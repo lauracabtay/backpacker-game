@@ -1,0 +1,50 @@
+<h2 class="game-header">PIXIE</h2>
+
+<div class="blocker-story">
+<% if(backpack.milk && backpack.milk) { %>
+    <div class="story" id="pixie-story">
+      <p>Howedy again, <%= user.username %>.
+            Thanks for the milk and cookie, just what I needed!
+            I see you found your way back to the forest.
+            Want to play another game to pass the time?
+        </p>
+    </div>
+    <% } else { %>
+        <div class="story" id="pixie-story">
+            <p>Hey!
+                You can't just go where you please in this forest.
+                I'm hungry and bored. I might let you past if you can offer me something in return.
+                How about MILK and a COOKIE and beat me at my new game, matching pairs
+                and I will let you past?
+                Not sure why you want to go into a cave when the forest is so lovely,
+                but your business is your own I suppose...
+                Want to play?
+            </p>
+        </div>
+    <% } %>
+</div>
+
+<div class="blocker-buttons">
+<% if(backpack.includes("COOKIE") && backpack.includes("MILK")) { %>
+	<% if (hasWonMatchingPairs == "WIN") { %>
+    <form action="/minigames/matchpairs">
+        <input id="matchpairs-minigame" type="submit" value="Play again?">
+    </form>
+	<% } else { %>
+    <form action="/minigames/matchpairs">
+        <input id="matchpairs-minigame" type="submit" value="Let's Play!">
+    </form>
+	<% } %>
+<% } else { %>
+	<p id="pixie-request">I will only play with you if you bring me MILK and a COOKIE!</p>
+<% } %>
+
+<form action="/areas/forest">
+    <input id="forest-from-pixie" type="submit" value=
+    <% if (hasWonMatchingPairs == "WIN") { %>
+        "Back to the forest"
+    <% } else { %>
+        "Come back later"
+    <% } %>/>
+</form>
+</div>

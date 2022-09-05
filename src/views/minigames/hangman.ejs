@@ -1,0 +1,36 @@
+
+<div class="hangman-container">
+	<h1>HANGMAN</h1>
+	<div class="hangman-box">
+		<div id="stats">
+			<p>Wrong guesses left: <%= hm.lives %>
+			</p>
+			<p>Word Length: <%= hm.word.length %>
+			</p>
+		</div>
+
+		<p id="current-word">
+			<% for (const letter of hm.word.split('') ) {%>
+				<%= hm.guessedLetters.includes(letter) ? letter : "_" %>
+					<% }%>
+		</p>
+
+		<form class="hangman-form" action="/minigames/hangman" method="post">
+			<% for (const letter of "abcdefghijklmnopqrstuvwxyz" .split('') ) { %>
+				<input <%=hm.guessedLetters.includes(letter) ? "disabled" : "" %>
+				type="submit" name="letter" id="<%= letter.toUpperCase() %>" value="<%= letter.toUpperCase() %>">
+						<% }%>
+		</form>
+	</div>
+</div>
+
+<script>
+	for (const letter of "abcdefghijklmnopqrstuvwxyz".toUpperCase().split('')) {
+		document.addEventListener("keydown", function (e) {
+			console.log(e.key);
+			if (e.key === letter.toLowerCase()) {
+				document.getElementById(letter).click();
+			}
+		});
+	}
+</script>

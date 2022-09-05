@@ -1,0 +1,44 @@
+
+
+body {
+  display: flex;
+  justify-content: center;
+}
+
+#story {
+  position: absolute;
+  font-size: 25px;
+
+  white-space: wrap;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  overflow-y: scroll; /* Hide vertical scrollbar */
+  overflow-x: hidden; /* Hide horizontal scrollbar */
+
+-ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+#story::-webkit-scrollbar {
+  display: none;
+}
+
+#p5CanvasContainer {
+  justify-self: right;
+  /* margin-left: 5%; */
+}
+
+* {
+  margin: 0%;
+  padding: 0%;
+}
+
+.p5Canvas {
+  width: auto;
+  height: 99%;
+}
+
+.left-pane-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

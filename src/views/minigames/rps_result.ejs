@@ -1,0 +1,19 @@
+<div id="rps-result">
+  <h3>You chose <b class="rps"><%= move1.toUpperCase() %></b> and the angry gnome chose <b class="rps"><%= move2.toUpperCase() %></b>
+  </br></br>
+  <% switch (winner) { 
+    case 0: %> 
+    It's a draw!
+  <% break; 
+    case 1: %>
+    YOU WON!
+  <% break; case 2: %> 
+    The angry gnome won, try again! 
+  <% break; } %></h3>
+</div>
+
+<script>
+  setTimeout(() => {
+     window.location = "/blockers/gnome";
+  }, 3000)
+</script>

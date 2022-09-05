@@ -1,0 +1,35 @@
+<%- include("partials/header") -%>
+
+
+<p style="display: none;" id="hasWonCodeBreaker"><%= hasWonCodeBreaker %></p>
+
+<div class="river-story" id="story">
+   <p> You walk along the river. You almost want to stop and enjoy your surroundings
+		 but your <%= user.currentGame.lostItem %> plays on your mind.
+		 Instead you decide to watch a couple of butterflies playing while on your walk.
+	 </p>
+</div>
+
+
+<script>
+	const backgroundImagePath = "/static/areaImages/river/bg.png";
+
+	new Sign(12, 14, "To Swamp", () => { window.location.href = "/areas/swamp"; });
+	new Sign(4, 8, "Over Bridge", () => { window.location.href = "/areas/bridge"; });
+
+  if (document.getElementById("hasWonCodeBreaker").innerText == "WIN") {
+			new Sign(0, 14, "To Farm", () => { window.location.href = "/areas/farm"; });
+		} else {
+			const mountainsSign = new Sign(0, 14, "To Farm", () => { });
+      mountainsSign.callback = () => { mountainsSign.message = "You need to win CODE BREAKER to open the Farmer's Gate!" }
+		}
+
+    CollectibleObject.objectImagesURI = [
+		"/static/images/sprites/water-bottle.png",
+	]
+	CollectibleObject.objects = [
+		new CollectibleObject("Water Bottle", 0, 9, 1, (obj) => { obj.enabled = false; obj.hidden = true; }),
+	]
+</script>
+
+<%- include("partials/footer") -%>

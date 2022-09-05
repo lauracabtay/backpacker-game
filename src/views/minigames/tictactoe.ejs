@@ -1,0 +1,61 @@
+<div class="tictactoe-container">
+<h1>TIC-TAC-TOE</h1>
+
+<div id="ttt-story">
+<p>Uh oh! It looks like there is a diamond dust blockage...</p>
+<p>Play tic-tac-toe to clear the blockage.</p>
+<br>
+
+<% if (locals.hasOwnProperty('winner')) {
+if (winner === true) { %>
+    <p>You win! You can now go to the pathway.</p>
+    <p>Wait! Take some diamond dust with you!</p>
+<% }  else if (winner === false) { %>
+    You lose!
+<% } else { %>
+    Draw!
+<% }
+} %>
+<br/><br/>
+</div>
+
+<form class="tictactoe-form" action="/minigames/tictactoe" method="post">
+    <table>
+        <% for (const [rowIndex, row] of board.entries()) { %>
+            <tr>
+                <% for (const [elIndex, element] of row.entries()) { %>
+                    <td>
+                        <% if (element === true) { %>
+                            X
+                        <% } else if (element === false) { %>
+                            0
+                        <% } else if (locals.enableMove) { %>
+                            <button type="submit" name="move" value="<%= rowIndex %>,<%= elIndex %>">Place</button>
+                        <% } %>
+                    </td>
+                <% } %>
+            </tr>
+        <% } %>
+    </table>
+</form>
+</div>
+
+<div id="ttt-page-buttons" >
+<% if (locals.hasOwnProperty('winner')) {
+    if (winner === true) { %>
+        <form action="/areas/cavetunnel">
+            <input type="submit" value="Back to the cave">
+        </form>
+        <form action="/areas/pathway">
+            <input type="submit" value="On to the pathway">
+        </form>
+    <% } else { %>
+        <form action="/areas/cavetunnel">
+            <input type="submit" value="Come back later">
+        </form>
+        <form action="/minigames/tictactoe">
+            <input type="submit" value="Play again">
+        </form>
+    <% } %>
+<% } %>
+</div>

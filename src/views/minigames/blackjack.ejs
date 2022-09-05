@@ -1,0 +1,24 @@
+<h2 class="game-header">FARMHOUSE BLACKJACK</h2>
+
+<div class="game-story">
+  <div id="blackjack-story">
+      <p>Rules are simple.
+      Try to get to 21 and beat my score but be careful not to go over and go bust or I automatically win.
+      'Stick' with the cards you have or 'Twist' to add another card to your hand.
+      Aces are worth 11 points and face cards are 10 points.
+      Give it your best shot, i'm pretty good...
+      </p>
+  </div>
+</div>
+
+<div id="blackjack-game">
+  <%= playerHand %>
+  <br/>
+</div>
+
+<div class="game-buttons">
+  <form action="/minigames/blackjack" method="post">
+    <input id="twist" type="submit" name="move" value="Twist"/>
+    <input id="stick" type="submit" name="move" value="Stick"/>
+  </form>
+</div>

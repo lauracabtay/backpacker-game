@@ -1,0 +1,31 @@
+<div class="game-story">
+    <%= (gameResult == 'WIN') ? "Congratulations! You've won! Jack is now happy for you to pass through the gate whenever you please."
+    : "You lost, you didn't crack the padlock code this time. Try again to get to the river." %>
+    </div>
+    <br/><br/>
+    <h2 class="game-header">The padlock code was <%= game.targetCode %></h2>
+</div>
+
+<div class="game-buttons">
+
+    <% if (gameResult != 'WIN') { %>
+        <form action="/minigames/codebreaker">
+            <input class="codebreaker" type="submit" value="Play Again"/>
+        </form>
+        <% } %>
+
+        <form action="/areas/farm">
+            <input class="farm" type="submit"
+            <% if (gameResult != 'WIN') { %>
+                value='Come back later'
+            <% } else { %>
+                value='Back to the farm'
+            <% } %>/>
+        </form>
+
+    <% if (gameResult == 'WIN') { %>
+        <form action="/areas/river">
+            <input class="river" type="submit" value="To the river"/>
+        </form>
+    <% } %>
+</div>

@@ -1,0 +1,49 @@
+<h2 class="game-header">FARMER JACK</h2>
+
+<div class="blocker-story">
+<% if(backpack.woolyhat) { %>
+<div class="story" id="jack-story">
+  <p>Howdy again, <%= user.username %>.
+		Thanks for giving me that spade, it'll come in mighty useful!
+		Hope the wooly hat has done you good?
+		Now I got ma farm sorted, want another game for fun?
+	</p>
+</div>
+<% } else { %>
+	<div class="story" id="jack-story">
+		<p>Hi, name's Jack!
+			I'd love to stop and chat but I've got so much to do and darnit
+			I've lost my spade! If you have one, I'd be willing to trade
+			my best wooly hat, you'll need it if you're off exploring!
+			The mountains are a dangerous place to those unprepared.
+			How about a game, if you win we swap?
+		</p>
+	</div>
+<% } %>
+</div>
+
+<div class="blocker-buttons">
+
+<% if(backpack.includes("SPADE")) { %>
+	<% if (hasWonBlackjack == "WIN") { %>
+    <form action="/minigames/blackjack">
+        <input id="blackjack-minigame" type="submit" value="Play again Jack?">
+    </form>
+	<% } else { %>
+    <form action="/minigames/blackjack">
+        <input id="blackjack-minigame" type="submit" value="Let's Play!">
+    </form>
+	<% } %>
+<% } else { %>
+	<p id="farmer-request">You need a <b>SPADE</b> to play this game.</p>
+<% } %>
+
+<form action="/areas/farm">
+	<input id="farm-from-farmer" type="submit" value=
+	<% if (hasWonBlackjack == "WIN") { %>
+			"Back to the Farm"
+	<% } else { %>
+			"Come back later"
+	<% } %>/>
+</form>
+</div>

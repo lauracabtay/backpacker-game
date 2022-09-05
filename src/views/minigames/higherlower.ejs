@@ -1,0 +1,33 @@
+<h2 class="game-header">SYLKIE'S HIGHER OR LOWER</h2>
+
+<div class="game-story">
+    <% if (game.length > 1) { %>
+        <p id="story">
+            Well done, good guess.
+            Can you guess correctly again? 
+        </p>
+    <% } else { %>
+        <p id="story">
+            Hi, lovely to see you.
+            It's so nice to meet people in the forest. I'm Silkye the fairy.
+            I would love to have tea and play a game if you would like.
+            I might even have something for you. 
+            I love guessing games, just guess higher or lower correctly 5 times in a row and win the game.
+        </p>
+    <% } %>
+</div>
+
+<div id="highlow-game">
+    <%= game %>
+</div>
+
+<div class="game-buttons">
+    <form action="/minigames/higherlower" method="post">
+        <input id="higher" type="submit" name="guess" value="Higher"/>
+        <input id="lower" type="submit" name="guess" value="Lower"/>
+    </form>
+<br/><br/>
+    <form action="/areas/forest">
+        <input class="forest" type="submit" value="Come back later"/>
+    </form>
+</div>

@@ -1,0 +1,45 @@
+<%- include("partials/header") -%>
+
+	<div class="pathway-story" id="story">
+  <p><%= user.name %>, you've reached a junction in the road.
+  You've come so far but where to go next? </p>
+	</div>
+
+	<!-- TODO: temp dirty solution -->
+	<p style="display: none;" id="hasWonRps"><%= hasWonRps %></p>
+	<p style="display: none;" id="hasWonTicTacToe"><%= hasWonTicTacToe %></p>
+
+	<script>
+		const backgroundImagePath = "/static/areaImages/path/bg2.png";
+
+		CollectibleObject.objectImagesURI = [
+			"/static/areaImages/path/toadstool.png",
+		]
+		CollectibleObject.objects = [
+			new CollectibleObject("Toadstool", 0, 7, 11, (obj) => { obj.enabled = false; obj.hidden = true; }),
+		]
+
+		Character.objectImagesURI = [
+			"/static/images/sprites/angry-gnome.png",
+		]
+		Character.objects = [
+			new Character("Gnome", 0, 7, 12, (obj) => { window.location.href = "/blockers/gnome"; }),
+		]
+
+		new Sign(7, 1, "To Meadow", () => { window.location.href = "/areas/meadow"; });
+
+		if (document.getElementById("hasWonRps").innerText == 'WIN') {
+			new Sign(8, 14, "To Ruins", () => { window.location.href = "/areas/ruins"; });
+		} else {
+			new Sign(8, 14, "To Ruins", () => { window.location.href = "/blockers/gnome"; });
+		}
+
+		if (document.getElementById("hasWonTicTacToe").innerText != "WIN") {
+    		const pathwaySign = new Sign(1, 4, "To Cave", () => { });
+    		pathwaySign.callback = () => { pathwaySign.message = "You need to win Tic Tac Toe\nto follow this path." }
+  		} else {
+    	new Sign(1, 4, "To Cave", () => { window.location.href = "/areas/cavetunnel"; });
+  		};
+	</script>
+
+	<%- include("partials/footer") -%>

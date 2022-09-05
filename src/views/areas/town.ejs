@@ -1,0 +1,31 @@
+<%- include("partials/header") -%>
+
+<div class="town-story" id="story">
+	<p>Hello <%= user.name %>!
+	Now is your best chance to recover your lost <%= user.currentGame.lostItem %>.
+	We have packed your backpack with some essentials ready for your adventure.
+	Explore the lands by navigating to other areas.
+	Keep an eye out for items along the way.
+	You never know what will come in useful.
+	We hope you don't run into too much trouble...
+	We hope you find your lost <%= user.currentGame.lostItem %> soon.
+	Good luck!</p>
+</div>
+
+<script>
+	const backgroundImagePath = "/static/areaImages/town/bg2.png";
+
+	new Sign(9, 15, "To Meadow", () => { window.location.href = "/areas/meadow"; });
+	new Sign(14, 3, "To Bridge", () => { window.location.href = "/areas/bridge"; });
+	new Sign(14, 8, "To Farm", () => { window.location.href = "/areas/farm"; });
+	new Sign(0, 4, "To Forest", () => { window.location.href = "/areas/forest"; });
+
+	CollectibleObject.objectImagesURI = [
+		"/static/images/sprites/saucepan.png",
+	]
+	CollectibleObject.objects = [
+		new CollectibleObject("Saucepan", 0, 6, 5, (obj) => { obj.enabled = false; obj.hidden = true; }),
+	]
+</script>
+
+<%- include("partials/footer") -%>

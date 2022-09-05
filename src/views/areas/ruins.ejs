@@ -1,0 +1,14 @@
+<%- include("partials/header") -%>
+
+<div id="story" class="ruins-story">
+	Well done <%= user.name %>!
+	You sacrificed the toadstool🍄 upon the altar found within the mystical ruins.
+	The toadstool🍄 turned into your long lost <%= user.currentGame.lostItem %>!😱
+</div>
+
+<script>
+	const backgroundImagePath = "/static/areaImages/ruins/bg.png";
+	new Sign(7, 15, "To Path", () => { window.location.href = "/areas/pathway"; });
+</script>
+
+<%- include("partials/footer") -%>

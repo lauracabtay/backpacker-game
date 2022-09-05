@@ -1,0 +1,27 @@
+<div class="game-story">
+<% if (gameResult == 'WIN') { %>
+  <p>
+    Congratulations, you WIN! You beat my time! </br>
+    I'll give you this compass to guide you to the cave tunnel.</br>
+    I'm always in the forest if you ever want to play again.
+  </p>
+<% } else { %>
+  <p>
+    Too bad, you didn't win. I was faster than you!</br>
+    Don't worry too much though, you can play again if you want to, it's so much fun.
+  </p>
+<% } %>
+</div>
+
+<div class="game-buttons">
+<form action="/areas/forest">
+<input class="forest" type="submit" value="Back to the forest"/>
+</form>
+<form action="/areas/cavetunnel">
+    <input class="forest" type="submit" value="Into the cave!"/>
+    </form>
+
+<form action="/minigames/matchpairs">
+<input class="forest" type="submit" value="Play Again"/>
+</form>
+</div>

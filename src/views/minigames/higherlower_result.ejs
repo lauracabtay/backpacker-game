@@ -1,0 +1,23 @@
+
+<div class="game-story">
+    <% if (gameResult == 'WIN') { %>
+        <p>Congratulations, you WIN! The last card was a <%= lastCard %>. 
+        It's been so much fun to play with you. <br/><br/><h3>Please take this <b>SPADE</b>
+        as a token of my thanks for such a wonderful time.</br><br/></h3>
+        I'm always in the forest if you ever want to play again.</p>
+    <% } else { %>
+        <p>Too bad, you didn't win. The card was a <%= lastCard %>.
+        Don't worry too much though, I am happy to play all day, it's so much fun.</p>
+    <% } %>
+</div>
+
+<div class="game-buttons">
+    <form action="/minigames/higherlower">
+        <input class="forest" type="submit" value="Play Again"/>
+    </form>
+
+    <form action="/areas/forest">
+        <input class="forest" type="submit" value="Back to forest"/>
+    </form>
+</div>
+

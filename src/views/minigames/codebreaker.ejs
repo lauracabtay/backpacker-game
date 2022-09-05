@@ -1,0 +1,62 @@
+<head>
+    <link rel="stylesheet" type="text/css" href="/static/css/codebreaker.css">
+</head>
+
+<h2 class="game-header">CODEBREAKER</h2>
+
+<div class="game-story">
+    <p>The gate between the farm and the river is locked!
+    Crack the code on the padlock to open the gate and get through.
+    The code is composed of 4 digits from 0 to 9 and there are no repeating digits.
+    Enter your guess in the box below.</p>
+</div>
+
+<div id="codebreaker-info">
+    <p>You only have <%= game.remainingGuesses %> <%= game.remainingGuesses == 1 ? 'guess' : 'guesses' %> left!</p>
+</div>
+
+<div class="game-buttons">
+    <form method="post">
+        <input type="text" name="input" maxlength="4"  id="input" pattern="\d{4}" required/>
+        <input type="submit" name="userGuess" id="user-guess" value="Submit">
+    </form>
+</div>
+
+<div id="codebreaker-game">
+    <% if (locals.showResults) { %>
+    <h4 id="codebreaker-guess">You entered <%= userGuess %></h4>
+    <p>You've got <span class="correctly-placed"><%= correctlyPlaced %> correctly placed</span> <%= correctlyPlaced == 1 ? 'number' : 'numbers' %></p>
+    <p>You've got <span class="incorrectly-placed"><%= incorrectlyPlaced %> incorrectly placed</span> <%= incorrectlyPlaced == 1 ? 'number' : 'numbers' %></p>
+    <p>You've got <span class="no-match"><%= noMatch %> non-matching</span> <%= noMatch == 1 ? 'number' : 'numbers' %></p>
+    <% } %>
+
+    <br>
+    <% if (game.userGuesses.length > 0) { %>
+        <h4 id="previous-guesses">Your previous guesses:</h4>
+        <div id="userguesses-container">
+            <div id="userguesses">
+            <% game.userGuesses.forEach(function(userGuess){ %>
+                <p><%= userGuess %></p>
+            <% }); %>
+            </div>
+
+            <div id="userguesses-check">
+            <% game.guessCheck.forEach(function(check){ %>
+                <p>
+                <span class="correctly-placed"><%= check[0]%></span>
+                <span class="incorrectly-placed"><%= check[1]%></span>
+                <span class="no-match"><%= check[2]%></span>
+                </p>
+            <% }); %>
+            </div>
+        </div>
+    <% } %>
+
+    <div class="game-buttons">
+        <form action="/areas/farm">
+            <input class="river" type="submit" value="Come back later"/>
+        </form>
+    </div>
+</div>
+
+

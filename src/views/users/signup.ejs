@@ -1,0 +1,22 @@
+<% if (locals.error) { %>
+    <h5>
+        <%= error %>
+    </h5>
+    <% } %>
+
+        <div class="signup-container">
+            <img class="logo" src="/static/images/backpacker-logo-export.png" alt="logo">
+            <div class="signup-box">
+                <form method="post" action="/users/signup">
+                    <label for="name">Username:</label>
+                    <input type="text" name="name" id="name" required>
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" id="email" required>
+                    <label for="password">Password:</label>
+                    <input type="password" name="password" id="password" required>
+                    <label for="password_confirm">Confirm password:</label>
+                    <input type="password" name="password_confirm" id="password_confirm" required>
+                    <input class="button" type="submit" value="LOGIN">
+                </form>
+            </div>
+        </div>

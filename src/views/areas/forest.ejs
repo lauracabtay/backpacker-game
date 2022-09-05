@@ -1,0 +1,54 @@
+<%- include("partials/header") -%>
+
+	<p style="display: none;" id="backpack">
+		<%= hasWoolyHat %>
+	</p>
+	<p style="display: none;" id="hasWonMatchPairs">
+		<%= hasWonMatchPairs %>
+	</p>
+
+	<div class="forest-story" id="story">
+		<p>You enter what looks like a pretty woodland yet it makes you feel uneasy.
+			Like there is something watching you.
+			All manor of folk could live in here, best be careful who you talk to.
+		</p>
+	</div>
+
+
+	<script>
+		const backgroundImagePath = "/static/areaImages/forest/bg2.png";
+
+		new Sign(15, 13, "To Town", () => { window.location.href = "/areas/town"; });
+
+		if (document.getElementById("hasWonMatchPairs").innerText == "WIN") {
+			new Sign(1, 13, "To Cave", () => { window.location.href = "/areas/cavetunnel"; });
+		} else {
+			const mountainsSign = new Sign(1, 13, "To Cave", () => { window.location.href = "/blockers/pixie"; });
+		}
+
+		if (document.getElementById("backpack").innerText == "true") {
+			new Sign(2, 3, "To Mountains", () => { window.location.href = "/areas/mountains"; });
+		} else {
+			const mountainsSign = new Sign(2, 3, "To Mountains", () => { });
+			mountainsSign.callback = () => { mountainsSign.message = "You need a wooly hat to got to the mountains!" }
+		}
+
+		CollectibleObject.objectImagesURI = [
+			"/static/images/sprites/stick.png",
+		]
+		CollectibleObject.objects = [
+			new CollectibleObject("Stick", 0, 7, 8, (obj) => { obj.enabled = false; obj.hidden = true; }),
+		];
+
+		Character.objectImagesURI = [
+			"/static/areaImages/forest/fairy.png",
+			"/static/areaImages/forest/pixie.png",
+		]
+		Character.objects = [
+			new Character("Fairy", 0, 9, 6, (obj) => { window.location.href = "/minigames/higherlower"; }),
+			new Character("Pixie", 1, 3, 14, (obj) => { window.location.href = "/blockers/pixie"; }),
+		];
+
+	</script>
+
+	<%- include("partials/footer") -%>

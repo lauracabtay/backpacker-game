@@ -1,0 +1,25 @@
+<%- include("partials/header") -%>
+
+<div class="mountain-story" id="story">
+  <p>Wow! It's soo cold up here! Bet you're pleased Jack swapped you his wooly hat.
+		Looks like someone has been here before...
+		Take a quick look around but don't stay too long you might freeze!
+	</p>
+</div>
+
+<script>
+	const backgroundImagePath = "/static/areaImages/mountains/bg.png";
+
+	CollectibleObject.objectImagesURI = [
+		"/static/images/sprites/matches.png",
+	]
+	CollectibleObject.objects = [
+		new CollectibleObject("Matches", 0, 10, 10, (obj) => { obj.enabled = false; obj.hidden = true; }),
+	]
+
+	new Sign(8, 14, "To Forest", () => { window.location.href = "/areas/forest"; });
+	new Sign(4, 6, "To Cave", () => { window.location.href = "/areas/cavetunnel"; });
+
+</script>
+
+<%- include("partials/footer") -%>

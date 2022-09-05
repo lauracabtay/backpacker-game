@@ -1,0 +1,25 @@
+
+<div class="hangman-container">
+<div class="hangman-box">
+<h2> You <%= hm.lives <= 0 ? "Lost" : "Won" %></h2>
+<h2>The word was "<%= hm.word %>"</h2>
+
+<div class="game-buttons">
+	<form action="/areas/bridge" method="get">
+		<input type="submit" value="Go Back to the Bridge">
+	</form>
+
+	<% if (hm.lives <= 0) { %>
+	<form action="/minigames/hangman" method="get">
+		<input type="submit" value="Play Again">
+	</form>
+
+	<% } else { %>
+		<form action="/areas/river" method="get">
+			<input type="submit" value="On to the River">
+		</form>
+	<% } %>
+</div>
+
+</div>
+</div>

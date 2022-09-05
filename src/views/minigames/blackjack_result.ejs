@@ -1,0 +1,50 @@
+<h2 class="game-header">BLACKJACK RESULT</h2>
+
+<div id="blackjack-game">
+	<%= playerHand %>
+</div>
+
+<div id="blackjack-scores">
+	<p id="your-score">Your Score: <%= playerScore %></p>
+	<p>Jack's Score: <%= jacksScore %></p>
+</div>
+
+<div class="game-story">
+	<% if(playerScore > 21) { %>
+		<div id="story" class="blackjack-result-story">
+		<p>Ahh, so close! You went bust!
+				<h3>You <%= gameResult %></h3>
+				Maybe another game?
+		</p>
+		</div>
+	<% } else if(playerScore < jacksScore) { %>
+	<div id="story" class="blackjack-result-story">
+		<p>Too bad, <italic>farmhouse</italic> wins!
+				<h3>You <%= gameResult %></h3>
+				I did say I was pretty good. Maybe next time...
+		</p>
+	</div>
+	<% } else { %>
+		<div id="story" class="blackjack-result-story">
+		<p>Woweee! You're good at this!
+			<br/><br/>
+				<h3>You <%= gameResult %></h3><br/>
+				I would say I'm sad but i'm pleased to have a new spade!<br/>
+				Here, take my <b>WOOLY HAT</b>, you may need it.
+		</p>
+	</div>
+	<% } %>
+</div>
+
+<div class="game-buttons">
+	<form action="/minigames/blackjack" method="get">
+		<input type="submit" value="Play Again">
+	</form>
+
+	<form action="/areas/farm" method="get">
+		<input type="submit" value="Back to the Farm">
+	</form>
+</div>
+
+
+

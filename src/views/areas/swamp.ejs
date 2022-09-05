@@ -1,0 +1,26 @@
+<h2 class="game-header">SWAMP</h2>
+
+<div class="game-story" id="swamp-story">
+  <p>It starts to get foggy and you step carefully.
+		Before you realise, your ankle deep in a swamp.
+		You hastily remove your foot from the murky waters and start to edge around them.
+		Mind over matter is definitely needed now!
+		Time to make your way to safer ground.
+  </p> 
+</div>
+
+<div class="game-buttons">
+  <form action=
+    <% if (hasWonSudoku == 'WIN') { %>
+      "/areas/meadow"
+    <% } else { %>
+      "/minigames/sudoku"
+    <% } %>>
+    <input class="meadow" type="submit" value="Meadow"/>
+  </form>
+
+  <form action="/areas/river">
+    <input class="river" type="submit" value="River"/>
+  </form>
+</div>
+

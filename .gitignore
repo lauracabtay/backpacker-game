@@ -1,0 +1,15 @@
+.env
+*.iml
+.idea/
+build/
+
+.vscode/
+
+coverage/
+.nyc_output/
+cypress/videos/
+cypress/screenshots/
+
+node_modules/
+
+**/.DS_Store

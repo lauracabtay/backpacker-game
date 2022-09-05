@@ -1,0 +1,39 @@
+<h2 class="game-header">TROLL</h2>
+
+<div class="game-story">
+    <% if (hasWonHangman == "WIN") { %>
+        <p>You beat me fair and square. I guess I can let you past today.
+            If you do want to play again, I wouldn't mind. 
+            It gets lonely under the bridge on my own all day.
+        </p>
+    <% } else { %>
+        <p>STOP! You don't get across so easily without my permission!
+        My bridge, my rules. You only get across if you can guess the word 
+        i'm thinking of. If not, you won't be crossing any time soon!
+        </p>
+    <% } %>
+</div>
+
+<div class="blocker-buttons">
+
+<% if (hasWonHangman == "WIN") { %>
+    <form action="/minigames/hangman">
+        <input id="hangman-minigame" type="submit" value="Play Again">
+    </form>
+<% } else { %>
+    <form action="/minigames/hangman">
+        <input id="hangman-minigame" type="submit" value="Let's Play!">
+    </form>
+<% } %>
+
+<form action="/areas/bridge">
+    <input id="bridge-from-troll" type="submit" value=
+    <% if (hasWonHangman == "WIN") { %>
+        "Back to the bridge"
+    <% } else { %>
+        "Come back later"
+    <% } %>/>
+</form>
+
+
+</div>

@@ -1,0 +1,47 @@
+<h2 class="game-header">GRUMPY GNOME</h2>
+
+<div class="blocker-story">
+<% if (hasWonRps == null) { %>
+  <div class="story" id="gnome-story">
+    <p>Hey you there! Stop!
+    I won't let you pass. You must best me at my favourite game.
+    To sweeten the deal, if you win, I'll give you my TOADSTOOL.
+    Will you play?</p>
+  </div>
+<% } else if (hasWonRps == "WIN") { %>
+  <div class="story" id="win-vs-gnome-story">
+    <p>You beat me! I can't believe it!
+    You must have cheated somehow?
+    I suppose I have to give you my TOADSTOOL...
+    ...and let you on your way.
+    Leave me before I change my mind!</p>
+  </div>
+<% } else { %>
+  <div class="story" id="lost-vs-gnome-story">
+    <p>AHAHAHAHA! I knew you couldn't beat me!
+    I am the best at this game.
+    Try again if you dare, I could play this all day!</p>
+  </div>
+<% } %>
+</div>
+
+<div class="blocker-buttons">
+  <% if (hasWonRps == "WIN") { %>
+    <form action="/areas/ruins">
+        <input id="rps-minigame" type="submit" value="On to the ruins!">
+    </form>
+  <% } else { %>
+    <form action="/minigames/rps">
+        <input id="rps-minigame" type="submit" value="Let's do this!">
+    </form>
+  <% } %>
+
+  <form action="/areas/pathway">
+    <input id="pathway-from-gnome" type="submit" value=
+      <% if (hasWonRps == "WIN") { %>
+        "Back to the pathway"
+      <% } else { %>
+          "Come back later"
+      <% } %>/>
+    </form>
+</div>

@@ -1,0 +1,39 @@
+<%- include("partials/header") -%>
+
+<p style="display: none;" id="hasWonHangman"><%= hasWonHangman %></p>
+
+
+<div class="bridge-story" id="story">
+	<p>You reach a fairly small bridge and hear the water trickling along beneath.
+		You you think about bridges from your childhood stories and smile.
+		This one is good and strudy and you should be across in no time.
+	</p>
+</div>
+
+<script>
+  const backgroundImagePath = "/static/areaImages/bridge/bg.png";
+
+	if (document.getElementById("hasWonHangman").innerText == "WIN") {
+			new Sign(1, 6, "To Town", () => { window.location.href = "/areas/town"; });
+		} else {
+			const mountainsSign = new Sign(1, 6, "To Town", () => { window.location.href = "/blockers/troll"; });
+		}
+
+	if (document.getElementById("hasWonHangman").innerText == "WIN") {
+			new Sign(14, 10, "To River", () => { window.location.href = "/areas/river"; });
+		} else {
+			const mountainsSign = new Sign(14, 10, "To River", () => { window.location.href = "/blockers/troll"; });
+		}
+
+
+		Character.objectImagesURI = [
+			"/static/images/sprites/troll.png",
+		]
+
+    Character.objects = [
+			new Character("Troll", 0, 10, 6, (obj) => { window.location.href = "/blockers/troll"; }),
+		];
+</script>
+
+<%- include("partials/footer") -%>
+
