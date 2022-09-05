@@ -1,1 +1,1 @@
-web: NODE_ENV=development ts-node --esm src/index.ts
+web: npm start
