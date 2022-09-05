@@ -1,3 +1,5 @@
+import p5 from 'p5'
+
 function toArray(value) {
   return Array.isArray(value) ? value : [value];
 }
@@ -9,8 +11,8 @@ async function getItems() {
 }
 
 function placeImageAt(xIndex, yIndex, imageToPlace) {
-  const backPackWidth = backPack.width;
-  const backPackHeight = backPack.height;
+  const backPackWidth = p5.backPack.width;
+  const backPackHeight = p5.backPack.height;
   const itemHeight = backPackHeight * 0.66; // <-- not arbitrary (% distance to the inv slots)
 
 	// constraints
@@ -26,7 +28,7 @@ function placeImageAt(xIndex, yIndex, imageToPlace) {
   const x = left + (colMultiplier * xIndex) + 25;
   const y = top + (rowMultiplier * yIndex);
 
-	image(imageToPlace, x, y);
+	p5.image(imageToPlace, x, y);
 }
 
 function placeItems(items, indexStart=0) {
@@ -37,7 +39,7 @@ function placeItems(items, indexStart=0) {
 			if (index > items.length) return;
 
 			const itemName = items[index];
-			const img = itemNameToImage[itemName];
+			const img = p5.itemNameToImage[itemName];
 			if (img)
 				placeImageAt(j, i, img);
 

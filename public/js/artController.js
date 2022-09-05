@@ -106,21 +106,23 @@ async function setup() {
 
 	// i am sorry for this
 	document.addEventListener('mousedown', function(mouseEvent) {
-		const pos = getCanvasPosition();
+		  const pos = getCanvasPosition();
 		const mx = mouseEvent.clientX;
 		const my = mouseEvent.clientY;
 		const bpw = backPack.width * BaseObject.scaleFactor;
     const bph = backPack.height * BaseObject.scaleFactor;
-
-		if (
-      mx > pos[0]           &&
-      my > pos[1] + bph / 2 &&
-      mx < pos[0] + bpw / 2 &&
-      my < pos[1] + bph
-    ) {
-			backPackPageNumber = !backPackPageNumber;
+    
+    if (pos[0] && pos[1]) {
+		  if (
+        mx > pos[0]           &&
+        my > pos[1] + bph / 2 &&
+        mx < pos[0] + bpw / 2 &&
+        my < pos[1] + bph
+      ) {
+        backPackPageNumber = !backPackPageNumber;
+      }
     }
-	});
+  });
 
 }
 

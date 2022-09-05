@@ -1,3 +1,6 @@
+import p5 from 'p5';
+import { BaseObject } from './baseObject';
+
 class CollectibleObject extends BaseObject {
   static objects = [];
   static objectImagesURI = [];
@@ -41,11 +44,11 @@ class CollectibleObject extends BaseObject {
 
   update() {
     if (!this.enabled) return;
-    if (this.pointCircleCollision(mouseX, mouseY)) {
-      this.onHover(this);
+    if (this.pointCircleCollision(p5.mouseX, p5.mouseY)) {
+      this.onHover();
 
-      if (mouseIsPressed) {
-        this.onClick(this);
+      if (p5.mouseIsPressed) {
+        this.onClick();
         fetch(`/users/backpack/add/${this.getURIName()}`);
 				window.location.reload();
       }
@@ -55,6 +58,6 @@ class CollectibleObject extends BaseObject {
   display() {
     if (this.hidden) return;
     let pos = this.getPosNoTranslation();
-    image(this.image, pos[0], pos[1]);
+    p5.image(this.image, pos[0], pos[1]);
   }
 }

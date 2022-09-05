@@ -1,4 +1,6 @@
-class BaseObject {
+import p5 from 'p5';
+
+export class BaseObject {
   static allObjects = [];
   static scaleFactor = 1;
 
@@ -37,8 +39,8 @@ class BaseObject {
   }
   /**
    * Translates all objects
-   * @param {int} x x axis translation
-   * @param {int} y y axis translation
+   * @param {p5.int} x x axis translation
+   * @param {p5.int} y y axis translation
    */
   static translateAll(x, y) {
     for (const o of BaseObject.allObjects) {
@@ -48,7 +50,7 @@ class BaseObject {
 
   changeCursor(result) {
     if (result) {
-      cursor(HAND);
+      p5.cursor(p5.HAND);
     }
   }
 
@@ -93,6 +95,8 @@ class BaseObject {
 
   generateAABBDiv() {
     const aabbContainer = document.getElementById("aabbLinks");
-    aabbContainer.insertAdjacentHTML("beforeend", `<a id="${this.id}"> </a>`);
+    if (aabbContainer) {
+      aabbContainer.insertAdjacentHTML("beforeend", `<a id="${this.id}"> </a>`);
+    }
   }
 }
