@@ -40,14 +40,9 @@ declare module 'express-session' {
 
 logger.info('Starting server')
 
-const PORT = 3000;
 const url = "https://backpacker-game.herokuapp.com/";
 
 const app = express();
-
-app.listen(PORT, () => {
-  herokuAwake(url);
-});
 
 app.set('view engine', 'ejs');
 app.set('views', './src/views');
@@ -89,5 +84,7 @@ app.use((req, res, next) => {
 
 app.use(router);
 
-const port = process.env.PORT ?? 3000;
-export default app.listen(port, () => logger.info(`Listening on port ${port}`));
+export default app.listen(process.env.PORT, () => {
+	logger.info(`Listening on port ${process.env.PORT}`),
+	herokuAwake(url)
+});
