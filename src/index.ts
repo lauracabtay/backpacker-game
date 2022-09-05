@@ -61,13 +61,13 @@ app.use((req, res, next) => {
 app.use(ejsLayouts);
 app.use(bodyParser.urlencoded({extended: false}))
 
-if (!process.env.MONGO_URL) {
+if (!process.env.MONGODB_URI || !process.env.MONGO_URL) {
 	throw 'No MongoDB URL set!';
 }
 
 
 logger.info('Connecting to MongoDB');
-await mongoose.connect(process.env.MONGO_URL);
+await mongoose.connect(process.env.MONGODB_URI || process.env.MONGO_URL);
 logger.info('Connected to MongoDB');
 await import('./models/models.js')
 
